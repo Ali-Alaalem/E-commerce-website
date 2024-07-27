@@ -21,3 +21,29 @@ XO Store is an online shopping platform designed to offer users a seamless shopp
 - As a user I should be able to edit my profile and delete it
 
 - As a user I should be able to add things to my cart and delete from it
+
+# Wire frame
+
+## Landing Page
+
+![](/public/Images/home%20page.png)
+
+## Sing in page
+
+![](/public/Images/Sign%20in%20page.png)
+
+## Sing up page
+
+![](/public/Images/Sign%20up%20page.png)
+
+## Home page with nav
+
+![](/public/Images/HOME%20PAGE%20WITH%20NAV.png)
+
+## Categores
+
+![](/public/Images/Categores%20%20page.png)
+
+## Cart
+
+![](/public/Images/CART%20page.png)
