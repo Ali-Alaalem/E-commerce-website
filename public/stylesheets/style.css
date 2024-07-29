@@ -1,23 +1,86 @@
-body, html {
-    height: 100%;
+  /* CSS Reset */
+  * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-div {
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #4c4c4c;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
- 
+    min-height: 100vh;
 }
-.btn{
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex-grow: 1;
+}
+
+/* Header Styles */
+header {
+    background-color: #4c4c4c;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Main Content Styles */
+.welcome-message {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.welcome-message h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+    color: #666;
+}
+
+.buttons {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
-   
+    gap: 20px;
 }
 
-button{ margin-left: 30px;
-    margin-right: 30px;}
+.buttons a {
+    display: inline-block;
+    background-color: #7952b3;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-.container{   height: 100vh;}
+.buttons a:hover {
+    background-color: #5a3980;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4c4c4c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    font-size: 14px;
+}
