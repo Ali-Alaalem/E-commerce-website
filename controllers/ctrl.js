@@ -29,9 +29,13 @@ const profile = async (req, res) => {
 
 const cart = async (req, res) => {
   try {
-    const items = await Items.find({});
-
-    res.render("store/cart.ejs", { items });
+    const user = await User.findById(req.session.user.id);
+    const cart = user.cart;
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      totalPrice += item.price * item.qty;
+    });
+    res.render("store/cart.ejs", { user, totalPrice });
   } catch (error) {
     res.status(500).send("Failed to retrieve items");
   }
@@ -39,8 +43,10 @@ const cart = async (req, res) => {
 
 const food = async (req, res) => {
   try {
+    const user = req.session.user.id;
+
     const items = await Items.find({ categorys: "Food" });
-    res.render("Categorys/Food.ejs", { items });
+    res.render("Categorys/Food.ejs", { items, user });
   } catch (error) {
     res.status(500).send("Failed to retrieve items");
   }
@@ -48,16 +54,19 @@ const food = async (req, res) => {
 
 const drink = async (req, res) => {
   try {
+    const user = req.session.user.id;
     const items = await Items.find({ categorys: "Drinks" });
-    res.render("Categorys/Drinks.ejs", { items });
+    res.render("Categorys/Drinks.ejs", { items, user });
   } catch (error) {
     res.status(500).send("Failed to retrieve items");
   }
 };
 const groceries = async (req, res) => {
   try {
+    const user = req.session.user.id;
+
     const items = await Items.find({ categorys: "Groceries" });
-    res.render("Categorys/Groceries.ejs", { items });
+    res.render("Categorys/Groceries.ejs", { items, user });
   } catch (error) {
     res.status(500).send("Failed to retrieve items");
   }

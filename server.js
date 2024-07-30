@@ -14,6 +14,9 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const Ctrl = require("./controllers/ctrl");
 const storeController = require("./controllers/store.js");
 const authController = require("./controllers/auth.js");
+const cartController = require("./controllers/cart.js");
+const cartDeletecontroller = require("./controllers/deleteCart.js");
+cartDeletecontroller;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
@@ -39,15 +42,16 @@ app.get("/", Ctrl.landing);
 app.use("/auth", authController);
 
 app.use(isSignedIn);
-app.get("/store/home", Ctrl.home);
-app.get("/store/cart", Ctrl.cart);
-app.get("/Categorys/Food", Ctrl.food);
-app.get("/store/profile", Ctrl.profile);
-app.get("/store/edit", Ctrl.edit);
-app.get("/Categorys/Drinks", Ctrl.drink);
-app.get("/Categorys/Groceries", Ctrl.groceries);
-app.use("/users", storeController);
-
+app.get("/store/home", isSignedIn, Ctrl.home);
+app.get("/store/cart", isSignedIn, Ctrl.cart);
+app.get("/Categorys/Food", isSignedIn, Ctrl.food);
+app.get("/store/profile", isSignedIn, Ctrl.profile);
+app.get("/store/edit", isSignedIn, Ctrl.edit);
+app.get("/Categorys/Drinks", isSignedIn, Ctrl.drink);
+app.get("/Categorys/Groceries", isSignedIn, Ctrl.groceries);
+app.use("/users", isSignedIn, storeController);
+app.use("/users", isSignedIn, cartController);
+app.use("/", isSignedIn, cartDeletecontroller);
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });

@@ -1,5 +1,5 @@
-  /* CSS Reset */
-  * {
+/* CSS Reset */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,11 +8,84 @@
 /* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #4c4c4c;
+    color: #fff;
+    background: black;
+    overflow: hidden; /* Prevent scrollbars due to animation */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+}
+
+/* Background Animation */
+@keyframes drift {
+    0% {
+        transform: translate(-100%, -100%) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(50%, 50%) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(150%, 150%) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    animation: drift linear infinite;
+    opacity: 0.3;
+}
+
+.shape1 {
+    top: -100px;
+    left: -100px;
+    animation-duration: 20s;
+    animation-delay: 0s;
+}
+
+.shape2 {
+    top: 30%;
+    left: 10%;
+    animation-duration: 25s;
+    animation-delay: 5s;
+}
+
+.shape3 {
+    top: 60%;
+    left: 50%;
+    animation-duration: 30s;
+    animation-delay: 10s;
+}
+
+.shape4 {
+    top: 20%;
+    left: 70%;
+    animation-duration: 35s;
+    animation-delay: 15s;
+}
+
+.shape5 {
+    top: 80%;
+    left: 20%;
+    animation-duration: 40s;
+    animation-delay: 20s;
 }
 
 .container {
@@ -20,13 +93,17 @@ body {
     margin: 0 auto;
     padding: 40px 20px;
     flex-grow: 1;
+    position: relative; /* Ensure content appears above background layers */
+    z-index: 10; /* Higher z-index to appear above animated background */
 }
 
 /* Header Styles */
 header {
-    background-color: #4c4c4c;
+    background-color: transparent;
     color: #fff;
     padding: 20px 0;
+    z-index: 10;
+    position: relative;
 }
 
 header h1 {
@@ -38,7 +115,7 @@ header h1 {
 .welcome-message {
     text-align: center;
     margin-bottom: 40px;
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 5px;
 }
@@ -50,7 +127,7 @@ header h1 {
 
 .welcome-message p {
     font-size: 18px;
-    color: #666;
+    color: #ccc;
 }
 
 .buttons {
@@ -73,14 +150,3 @@ header h1 {
     background-color: #5a3980;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #4c4c4c;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer p {
-    font-size: 14px;
-}
