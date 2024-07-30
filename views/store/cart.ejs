@@ -34,22 +34,30 @@
     <% }); %>
   </div>
 
-  <!-- Footer Section for Total Price and Checkout Button -->
   <footer class="cart-footer">
     <div class="total-price">
       <p><strong>Total Price:</strong> $<%= totalPrice %></p>
     </div>
     <form action="/users/<%= user._id %>/cart?_method=DELETE" method="POST" class="checkout-form">
-      <button type="submit">Checkout</button>
+      <button id="checkout" type="submit">Checkout</button>
     </form>
   </footer>
   
   <script>
+    let totalPrice=parseInt('<%=totalPrice%>')
     document.querySelectorAll('.qty-input').forEach(input => {
       input.addEventListener('change', function() {
         this.closest('form').submit();
       });
     });
+
+    
+      if (totalPrice !==0){
+    document.querySelector('#checkout').addEventListener("click",()=>{alert(`Thanks for using our store `) })
+  }
+  
+          
+    
   </script>
 </body>
 </html>

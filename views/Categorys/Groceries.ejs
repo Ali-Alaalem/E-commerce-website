@@ -23,11 +23,18 @@
                     <input type="text" name="img" id="img" hidden value="<%= item.img %>">
                     <input type="text"  name="type" hidden  value="<%= item.categorys%>">
 
-                    <button type="submit">Add to cart</button>
+                    <button id="Add" type="submit">Add to cart</button>
                 </div>
             </form>
             <% }) %>
         </div>
     </div>
+    <script>
+        for (let index = 0; index < 8; index++) {
+          document.querySelectorAll('#Add')[index].addEventListener("click",()=>{alert(`Item has been added!`)})
+        }
+  
+          
+      </script>
 </body>
 </html>
