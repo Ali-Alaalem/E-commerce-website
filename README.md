@@ -4,7 +4,7 @@
 
 ## Done by: Ali Abdulkarim Ebrahim
 
-[The Store](https://ali-alaalem.github.io/Memory-card-game/) | [My Planning File](https://github.com/Ali-Alaalem/e-commerce-website-project-2/blob/main/plan.md)
+[The Store](https://xo-store-0575ad0208c7.herokuapp.com/) | [My Planning File](https://github.com/Ali-Alaalem/e-commerce-website-project-2/blob/main/plan.md)
 
 ## Description
 
