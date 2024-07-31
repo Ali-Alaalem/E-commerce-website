@@ -8,6 +8,12 @@ const session = require("express-session");
 const path = require("path");
 const port = process.env.PORT ? process.env.PORT : "3000";
 
+//for image upload
+const fs = require("fs");
+const imgur = require("imgur");
+const fileUpload = require("express-fileupload");
+app.use(fileUpload());
+
 require("./config/database");
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");

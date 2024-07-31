@@ -9,32 +9,39 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-    <h1 class="text-center mt-4">Food Category</h1>
+    <h1 class="text-center mt-4">Drinks Category</h1>
     <div class="container">
         <div class="card-container">
             <% items.forEach(item => { %>
             <form action="/users/<%= user %>/cart" method="post">
                 <div class="card">
+                    <div class="checkmark">✔</div>
                     <p class="card-title"><img src="/Images/<%= item.img %>" alt=""></p>
                     <p class="card-text">Price: $<%= item.price %></p>
                     <input type="number" name="qty" id="qty" min="1" value="1">
                     <input type="text" name="name" id="name" hidden value="<%= item.name %>">
                     <input type="text" name="price" id="price" hidden value="<%= item.price %>">
                     <input type="text" name="img" id="img" hidden value="<%= item.img %>">
-                    <input type="text"   name="type" hidden  value="<%= item.categorys%>">
-
-                    <button id="Add" type="submit">Add to cart</button>
+                    <input type="text" name="type" hidden value="<%= item.categorys %>">
+                    <button class="btn-checkmark" type="submit">Add to cart</button>
                 </div>
             </form>
             <% }) %>
         </div>
     </div>
     <script>
-        for (let index = 0; index < 8; index++) {
-          document.querySelectorAll('#Add')[index].addEventListener("click",()=>{alert('Item has been added!')})
-        }
-  
-          
-      </script>
+        document.querySelectorAll('.btn-checkmark').forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault(); 
+                const card = button.closest('.card');
+                const checkmark = card.querySelector('.checkmark');
+                checkmark.classList.add('show');
+                setTimeout(() => {
+                    checkmark.classList.remove('show');
+                    button.closest('form').submit();
+                }, 500); 
+            });
+        });
+    </script>
 </body>
 </html>

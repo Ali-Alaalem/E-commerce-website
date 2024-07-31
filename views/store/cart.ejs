@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/stylesheets/cart.css" />
   <title>Cart</title>
 </head>
+</head>
 <body>
   <%- include('../partials/nav.ejs') %>
 
@@ -42,22 +43,34 @@
       <button id="checkout" type="submit">Checkout</button>
     </form>
   </footer>
-  
+
+  <div id="popup-overlay" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Thank You for Shopping with Us!</h2>
+      <button id="close-popup">Close</button>
+    </div>
+  </div>
+
   <script>
-    let totalPrice=parseInt('<%=totalPrice%>')
+    let totalPrice = parseInt('<%= totalPrice %>', 10);
+
     document.querySelectorAll('.qty-input').forEach(input => {
       input.addEventListener('change', function() {
         this.closest('form').submit();
       });
     });
 
-    
-      if (totalPrice !==0){
-    document.querySelector('#checkout').addEventListener("click",()=>{alert(`Thanks for using our store `) })
-  }
-  
-          
-    
+    if (totalPrice !== 0) {
+      document.querySelector('#checkout').addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent form submission for demo
+        document.querySelector('#popup-overlay').style.display = 'flex';
+      });
+    }
+
+    document.querySelector('#close-popup').addEventListener('click', () => {
+      document.querySelector('#popup-overlay').style.display = 'none';
+      document.querySelector('.checkout-form').submit(); // Submit the form after closing popup
+    });
   </script>
 </body>
 </html>

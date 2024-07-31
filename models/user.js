@@ -33,10 +33,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  zip: {
-    type: Number,
-    required: true,
-  },
   type: {
     type: Boolean,
   },

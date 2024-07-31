@@ -68,9 +68,10 @@ router.get("/sign-out", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+
+
 router.post("/store", async (req, res) => {
   await Items.create(req.body);
-
   res.redirect("/store/home");
 });
 

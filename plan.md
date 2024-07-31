@@ -4,7 +4,7 @@ XO Store is an online shopping platform designed to offer users a seamless shopp
 
 # ERD :
 
-![](/public/Images/image.png)
+![](/public/Images/ERD.png)
 
 # User stories:
 
