@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: {
+  adress: {
     type: String,
     required: true,
   },
