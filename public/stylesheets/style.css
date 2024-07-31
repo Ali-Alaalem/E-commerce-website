@@ -1,23 +1,20 @@
-/* CSS Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
     color: #fff;
     background: black;
-    overflow: hidden; /* Prevent scrollbars due to animation */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     position: relative;
 }
 
-/* Background Animation */
 @keyframes drift {
     0% {
         transform: translate(-100%, -100%) rotate(0deg);
@@ -93,11 +90,10 @@ body {
     margin: 0 auto;
     padding: 40px 20px;
     flex-grow: 1;
-    position: relative; /* Ensure content appears above background layers */
-    z-index: 10; /* Higher z-index to appear above animated background */
+    position: relative; 
+    z-index: 10; 
 }
 
-/* Header Styles */
 header {
     background-color: transparent;
     color: #fff;
@@ -111,7 +107,6 @@ header h1 {
     text-align: center;
 }
 
-/* Main Content Styles */
 .welcome-message {
     text-align: center;
     margin-bottom: 40px;
