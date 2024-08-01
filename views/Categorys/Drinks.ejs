@@ -16,6 +16,7 @@
             <form action="/users/<%= user %>/cart" method="post">
                 <div class="card">
                     <div class="checkmark">✔</div>
+                    <div class="wrongmark">✘</div>
                     <p class="card-title"><img src="/Images/<%= item.img %>" alt=""></p>
                     <p class="card-text">Price: $<%= item.price %></p>
                     <input type="number" name="qty" id="qty" min="1" value="1">
@@ -34,15 +35,24 @@
             button.addEventListener("click", (event) => {
                 event.preventDefault(); 
                 const card = button.closest('.card');
+                const qtyInput = card.querySelector('input[name="qty"]');
                 const checkmark = card.querySelector('.checkmark');
-                checkmark.classList.add('show');
-                setTimeout(() => {
-                    checkmark.classList.remove('show');
-                    button.closest('form').submit(); 
-                }, 500); 
+                const wrongmark = card.querySelector('.wrongmark');
+
+                if (qtyInput.value < 1) {
+                    wrongmark.classList.add('show');
+                    setTimeout(() => {
+                        wrongmark.classList.remove('show');
+                    }, 500); 
+                } else {
+                    checkmark.classList.add('show');
+                    setTimeout(() => {
+                        checkmark.classList.remove('show');
+                        button.closest('form').submit(); 
+                    }, 500); 
+                }
             });
         });
-        
     </script>
 </body>
 </html>

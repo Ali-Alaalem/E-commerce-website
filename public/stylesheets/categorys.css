@@ -20,6 +20,7 @@ body {
     border-radius: 10px;
     text-align: center;
     border: 1px solid #333;
+    position: relative;
 }
 
 .card img {
@@ -57,7 +58,8 @@ button:hover {
     background-color: #0056b3;
 }
 
-.checkmark {
+.checkmark,
+.wrongmark {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -65,7 +67,6 @@ button:hover {
     width: 50px;
     height: 50px;
     display: none;
-    background-color: #4CAF50;
     border-radius: 50%;
     color: white;
     text-align: center;
@@ -74,12 +75,21 @@ button:hover {
     z-index: 10;
 }
 
-.checkmark.show {
-    display: block;
-    animation: checkmark-animation 0.5s forwards;
+.checkmark {
+    background-color: #4CAF50;
 }
 
-@keyframes checkmark-animation {
+.wrongmark {
+    background-color: #FF0000;
+}
+
+.checkmark.show,
+.wrongmark.show {
+    display: block;
+    animation: mark-animation 0.5s forwards;
+}
+
+@keyframes mark-animation {
     0% {
         transform: translate(-50%, -50%) scale(0);
         opacity: 0;
@@ -98,7 +108,6 @@ button:hover {
     position: relative;
     overflow: hidden;
 }
-
 
 @media (max-width: 768px) {
     .card-container {

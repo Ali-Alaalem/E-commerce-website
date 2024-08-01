@@ -8,19 +8,23 @@ router.post("/:userId/cart", async (req, res) => {
   try {
     const current = await User.findById(req.session.user.id);
     let found = false;
-    current.cart.forEach((item) => {
-      if (item.name === req.body.name) {
-        let final = item.qty + parseInt(req.body.qty);
-        item.qty = final;
-        found = true;
+    if (req.body.qty >= 1) {
+      current.cart.forEach((item) => {
+        if (item.name === req.body.name) {
+          let final = item.qty + parseInt(req.body.qty);
+          item.qty = final;
+          found = true;
+        }
+      });
+      if (!found) {
+        current.cart.push(req.body);
       }
-    });
-    if (!found) {
-      current.cart.push(req.body);
-    }
 
-    await current.save();
-    res.redirect(`/Categorys/${categorys}`);
+      await current.save();
+      res.redirect(`/Categorys/${categorys}`);
+    } else {
+      res.redirect(`/Categorys/${categorys}`);
+    }
   } catch (error) {
     console.log(error);
     res.redirect("/");
