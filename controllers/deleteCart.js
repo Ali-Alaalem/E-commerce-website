@@ -27,13 +27,16 @@ router.put("/users/:userId/cart/:itemId", async (req, res) => {
     const current = await User.findById(req.params.userId);
     const cartId = req.params.itemId;
     const newQty = parseInt(req.body.qty);
-
-    const item = current.cart.id(cartId);
-    if (item) {
-      item.qty = newQty;
+    if (req.body.qty >= 1) {
+      const item = current.cart.id(cartId);
+      if (item) {
+        item.qty = newQty;
+      }
+      await current.save();
+      res.redirect(`/store/cart`);
+    } else {
+      res.redirect(`/store/cart`);
     }
-    await current.save();
-    res.redirect(`/store/cart`);
   } catch (error) {
     console.log(error);
     res.redirect("/");
