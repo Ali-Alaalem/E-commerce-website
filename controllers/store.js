@@ -7,6 +7,7 @@ router.delete("/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
     await User.findByIdAndDelete(userId);
+    req.session.destroy();
     res.redirect("/");
   } catch (error) {
     console.log(error);
@@ -24,7 +25,5 @@ router.put("/:userId", async (req, res) => {
     res.redirect("/");
   }
 });
-
-
 
 module.exports = router;
