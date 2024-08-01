@@ -11,7 +11,7 @@ const home = async (req, res) => {
   const thereIsuser = await User.findById(current);
 
   if (thereIsuser.type === true) {
-    return res.render("store/admin.ejs");
+    res.render("store/admin.ejs");
   }
   res.render("store/home.ejs");
 };
